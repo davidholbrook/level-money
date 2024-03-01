@@ -1,13 +1,13 @@
 import './App.css';
-import Header from './components/header'
-import Monthly from './components/monthly'
+import Header from './components/header';
+import Monthly from './components/monthly';
 
 function App() {
   return (
     <>
-  <Header />
-  <Monthly />
-   </>
+      <Header />
+      <Monthly />
+    </>
   );
 }
 
