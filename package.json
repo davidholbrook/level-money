@@ -1,6 +1,6 @@
 {
-  "name": "llat-tacker",
-  "version": "0.0.1",
+  "name": "Level Money",
+  "version": "0.0.2",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -10,6 +10,7 @@
     "dexie-react-hooks": "^1.1.7",
     "electron": "^28.2.3",
     "eslint-config-wesbos": "^4.0.1",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1"

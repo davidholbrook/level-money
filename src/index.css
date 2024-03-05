@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 body{
-  font-family: 'Helvetica Neue', arial, sans-serif;
+  font-family: Helvetica, arial, sans-serif;
 }
 
 .fancy{
-  font-family: 'Hoefler Text', 'Gills Sans', Georgia, serif
+  font-family: Raleway, Arial, serif
 }
