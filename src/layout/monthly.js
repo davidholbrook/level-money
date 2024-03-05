@@ -3,6 +3,7 @@ import React from 'react';
 import Dexie from 'dexie';
 import { useLiveQuery } from 'dexie-react-hooks';
 import LabelSwitch from '../utils/labelsSwitch';
+import Icons from '../icons/icons';
 
 function Monthly() {
   const db = new Dexie('llatDB');
@@ -55,8 +56,10 @@ function Monthly() {
         {allItems.length > 0 ? (
           allItems.map((item) => (
             <div className="flex items-center gap-2" key={item.id}>
-              <p className="my-4 pl-4 text-xl">
-                ${item.amount} {item.store} {LabelSwitch(item.label)}
+              <p className="mt-4 pl-4 text-xl flex items-center border-b-2 border-gray-300 w-[95%] pb-3">
+                <Icons icon="dollar" /> &nbsp;-{item.amount} {item.store}
+                &nbsp;&nbsp;
+                {LabelSwitch(item.label)}
               </p>
             </div>
           ))

@@ -2,7 +2,9 @@ import React from 'react';
 import Dexie from 'dexie';
 import styled from 'styled-components';
 
-export default function addToDb() {
+import Icons from '../icons/icons';
+
+export default function addToDb({ remove }) {
   const db = new Dexie('llatDB');
   db.version(1).stores({
     transact: '++id,amount,store,label',
@@ -16,41 +18,14 @@ export default function addToDb() {
     await db.transact.add({ amount, store, label });
   };
 
-  const Modal = styled.div`
-    display: grid;
-    background: #999999;
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-    top: 0;
-    left: 0;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
-
-    .open .modal-inner {
-      transform: translateY(0);
-    }
-  `;
-
-  const InnerModal = styled.div`
-    max-width: 600px;
-    min-width: 400px;
-    padding: 2rem;
-    border-radius: 5px;
-    min-height: 200px;
-    background: white;
-    transform: translateY(-200%);
-    transition: transform 2s;
-  `;
-
   return (
-    <Modal>
+    <Modal onClick={remove}>
       <InnerModal>
-        <h2>Add Transaction</h2>
-        <p>Monthly</p>
+        <span className="pointer absolute top-2 right-2 cursor-pointer">
+          <Icons icon="close" onClick={remove} />
+        </span>
+        <h2 className="text-4xl text-center text-dark mt-6">Add Transaction</h2>
+        <p className="itallic text-center text-dark">Monthly</p>
 
         <form
           className="add-item-form pl-4 block"
@@ -86,3 +61,27 @@ export default function addToDb() {
     </Modal>
   );
 }
+
+const Modal = styled.div`
+  display: grid;
+  background: rgba(71, 106, 111, 0.8);
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+`;
+
+const InnerModal = styled.div`
+  max-width: 600px;
+  min-width: 400px;
+  padding: 2rem;
+  border-radius: 5px;
+  min-height: 200px;
+  background: white;
+  border: 1px solid black;
+  box-shadow: 0 0 38px rgba(0, 0, 0, 0.2);
+  position: relative;
+`;
