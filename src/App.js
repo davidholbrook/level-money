@@ -1,7 +1,7 @@
 import './App.css';
-import Menu from './components/menu';
-import Monthly from './components/monthly';
-import Special from './components/special';
+import Menu from './layout/menu';
+import Monthly from './layout/monthly';
+import Special from './layout/special';
 
 function App() {
   return (

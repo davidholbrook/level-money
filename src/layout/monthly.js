@@ -13,26 +13,6 @@ function Monthly() {
   const allItems = useLiveQuery(() => db.transact.toArray(), []);
   if (!allItems) return null;
 
-  const addItemToDb = async (event) => {
-    event.preventDefault();
-    const amount = document.querySelector('.item-price').value;
-    const store = document.querySelector('.item-store').value;
-    const label = document.querySelector('.item-label').value;
-    await db.transact.add({ amount, store, label });
-  };
-
-  const removeItemFromDb = async (id) => {
-    if (window.confirm('Do you want to delete this transaction?')) {
-      await db.transact.delete(id);
-    }
-  };
-
-  const clearBtn = async () => {
-    if (window.confirm('Do you want to clear all tranactions')) {
-      await db.transact.clear();
-    }
-  };
-
   function TotalUp() {
     let number = 0;
 
@@ -78,12 +58,6 @@ function Monthly() {
               <p className="my-4 pl-4 text-xl">
                 ${item.amount} {item.store} {LabelSwitch(item.label)}
               </p>
-              <button
-                onClick={() => removeItemFromDb(item.id)}
-                type="button"
-                aria-labelledby="delete"
-                className="cursor-pointer"
-              />
             </div>
           ))
         ) : (

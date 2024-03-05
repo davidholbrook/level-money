@@ -8,7 +8,7 @@ const path = 'path';
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: 1000,
+    width: 1200,
     height: 700,
     icon: __dirname + '/public/icon.icns',
     webPreferences: {

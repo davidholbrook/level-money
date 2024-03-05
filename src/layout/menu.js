@@ -19,9 +19,12 @@ const Header = () => (
       className="relative top-[65vh] mx-auto  flex items-center justify-center bg-primary rounded-md p-3"
     >
       <Icons icon="plus" />
-      <span className="uppercase text-[1rem] font-semibold text-darkgrey fancy">
+      <button
+        type="button"
+        className="uppercase text-[1rem] font-semibold text-darkgrey fancy"
+      >
         Add Transaction
-      </span>
+      </button>
     </button>
   </div>
 );
