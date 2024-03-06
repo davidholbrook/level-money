@@ -40,7 +40,7 @@ function App() {
               </a>
             </li>
             <li
-              className={`border-b border-t border-white py-4 text-white text-center cursor-pointer ${state.page === 'special' ? 'bg-primary !text-black' : ''}`}
+              className={`border-b border-white py-4 text-white text-center cursor-pointer ${state.page === 'special' ? 'bg-primary !text-black' : ''}`}
             >
               <a
                 onClick={() => {
@@ -86,6 +86,7 @@ function App() {
               const dd = false;
               setState({ ...state, addPage: dd });
             }}
+            state
           />
         ) : null}
       </div>{' '}
