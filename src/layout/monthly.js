@@ -14,6 +14,12 @@ function Monthly() {
   const allItems = useLiveQuery(() => db.transact.toArray(), []);
   if (!allItems) return null;
 
+  const removeItemFromDb = async (id) => {
+    if (window.confirm('Do you want to delete this transaction?')) {
+      await db.transact.delete(id);
+    }
+  };
+
   function TotalUp() {
     let number = 0;
 
@@ -55,12 +61,19 @@ function Monthly() {
         </h2>
         {allItems.length > 0 ? (
           allItems.map((item) => (
-            <div className="flex items-center gap-2" key={item.id}>
-              <p className="mt-4 pl-4 text-xl flex items-center border-b-2 border-gray-300 w-[95%] pb-3">
+            <div
+              className="flex items-center gap-2 border-b-2 border-gray-300 w-[95%]"
+              key={item.id}
+            >
+              <p className="mt-4 pl-4 text-xl flex items-center  pb-3">
                 <Icons icon="dollar" /> &nbsp;-{item.amount} {item.store}
                 &nbsp;&nbsp;
                 {LabelSwitch(item.label)}
               </p>
+              <button onClick={() => removeItemFromDb(item.id)} type="button">
+                <Icons icon="delete" />
+                <span className="hidden">Delete</span>
+              </button>
             </div>
           ))
         ) : (
