@@ -21,11 +21,41 @@ function App() {
             Level Money
           </h1>
           <ul className="text-lg">
-            <li className="border-t border-b border-white py-4 bg-primary text-black text-center">
-              Monthly
+            <li
+              className={`border-b border-t border-white py-4 text-white text-center cursor-pointer ${state.page === 'monthly' ? 'bg-primary !text-black' : ''}`}
+            >
+              <a
+                onClick={() => {
+                  const dd = 'monthly';
+                  setState({ ...state, page: dd });
+                }}
+                onKeyDown={() => {
+                  const dd = 'monthly';
+                  setState({ ...state, page: dd });
+                }}
+                role="link"
+                tabIndex={0}
+              >
+                Monthly
+              </a>
             </li>
-            <li className="border-b border-white py-4 text-white text-center">
-              Special
+            <li
+              className={`border-b border-t border-white py-4 text-white text-center cursor-pointer ${state.page === 'special' ? 'bg-primary !text-black' : ''}`}
+            >
+              <a
+                onClick={() => {
+                  const dd = 'special';
+                  setState({ ...state, page: dd });
+                }}
+                onKeyDown={() => {
+                  const dd = 'special';
+                  setState({ ...state, page: dd });
+                }}
+                role="link"
+                tabIndex={0}
+              >
+                Special
+              </a>
             </li>
           </ul>
           <button
