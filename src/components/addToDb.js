@@ -16,15 +16,18 @@ export default function addToDb({ remove }) {
     const store = document.querySelector('.item-store').value;
     const label = document.querySelector('.item-label').value;
     await db.transact.add({ amount, store, label });
+    remove();
   };
+
+  window.addEventListener('keydown', (e) => {
+    console.log(e.key);
+    if (e.key === 'Escape') remove();
+  });
 
   return (
     <Modal onClick={remove}>
-      <InnerModal>
-        <span className="pointer absolute top-2 right-2 cursor-pointer">
-          <Icons icon="close" onClick={remove} />
-        </span>
-        <h2 className="text-4xl text-center text-dark mt-6">Add Transaction</h2>
+      <InnerModal onClick={(e) => e.stopPropagation()}>
+        <h2 className="text-4xl text-center text-dark">Add Transaction</h2>
         <p className="itallic text-center text-dark">Monthly</p>
 
         <form
@@ -75,9 +78,8 @@ const Modal = styled.div`
 `;
 
 const InnerModal = styled.div`
-  max-width: 600px;
-  min-width: 400px;
-  padding: 2rem;
+  width: 500px;
+  padding: 5rem;
   border-radius: 5px;
   min-height: 200px;
   background: white;
