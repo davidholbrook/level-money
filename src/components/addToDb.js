@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Dexie from 'dexie';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Icons from '../icons/icons';
 
-export default function addToDb({ remove }) {
+function AddToDb({ remove }) {
+  const [obstore, setObstore] = useState(1);
+
   const db = new Dexie('llatDB');
+  const db1 = new Dexie('llatSP');
   db.version(1).stores({
+    transact: '++id,amount,store,label',
+  });
+
+  db1.version(1).stores({
     transact: '++id,amount,store,label',
   });
 
@@ -15,7 +23,9 @@ export default function addToDb({ remove }) {
     const amount = document.querySelector('.item-price').value;
     const store = document.querySelector('.item-store').value;
     const label = document.querySelector('.item-label').value;
-    await db.transact.add({ amount, store, label });
+    (await (obstore === 0))
+      ? db.transact.add({ amount, store, label })
+      : db1.transact.add({ amount, store, label });
     remove();
   };
 
@@ -28,11 +38,47 @@ export default function addToDb({ remove }) {
     <Modal onClick={remove}>
       <InnerModal onClick={(e) => e.stopPropagation()}>
         <h2 className="text-4xl text-center text-dark">Add Transaction</h2>
-        <p className="itallic text-center text-dark">Monthly</p>
-
+        <hr className="my-5 border-b border-gray-200" />
+        <h3 className="text-sm text-center text-dark uppercase my-2">
+          Which type of transaction is it?
+        </h3>
+        <div className="bg-darkgrey rounded-full flex justify-between py-2 mx-10">
+          <button
+            type="button"
+            onClick={() => {
+              const dd = 0;
+              setObstore(dd);
+            }}
+            className={
+              obstore === 0
+                ? `bg-white px-6 mx-3 rounded-full font-bold text-darkgrey uppercase`
+                : `text-white pl-5 uppercase font-bold`
+            }
+          >
+            Monthly
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              const dd = 1;
+              setObstore(dd);
+            }}
+            className={
+              obstore === 1
+                ? `bg-white px-6 mx-3 rounded-full font-bold text-darkgrey uppercase`
+                : `text-white pr-5 uppercase font-bold`
+            }
+          >
+            Special
+          </button>
+        </div>
+        <hr className="my-5 border-b border-gray-200" />
+        <h3 className="text-sm text-center text-dark uppercase my-2">
+          Enter transaction
+        </h3>
         <form
           className="add-item-form pl-4 block"
-          onSubmit={(event) => addItemToDb(event)}
+          onSubmit={(e) => addItemToDb(e)}
         >
           <input
             type="text"
@@ -64,6 +110,12 @@ export default function addToDb({ remove }) {
     </Modal>
   );
 }
+
+export default AddToDb;
+
+AddToDb.propTypes = {
+  remove: PropTypes.func,
+};
 
 const Modal = styled.div`
   display: grid;
