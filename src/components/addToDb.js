@@ -3,10 +3,8 @@ import Dexie from 'dexie';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Icons from '../icons/icons';
-
 function AddToDb({ remove }) {
-  const [obstore, setObstore] = useState(1);
+  const [obstore, setObstore] = useState(0);
 
   const db = new Dexie('llatDB');
   const db1 = new Dexie('llatSP');
@@ -95,6 +93,7 @@ function AddToDb({ remove }) {
           />
           <select className="item-label border border-gray-900 block w-11/12 p-2 my-4 text-xl">
             <option value="1">Food</option>
+            <option value="2">Shopping</option>
             <option value="2">Gas</option>
             <option value="3">Services</option>
             <option value="4">Misc.</option>
