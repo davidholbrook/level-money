@@ -1,8 +1,7 @@
-/* eslint-disable */
 const electron = require('electron');
 
 const { app, BrowserWindow, Menu } = electron;
-const isMac = process.platform === 'darwin'
+const isMac = process.platform === 'darwin';
 const isDev = 'electron-is-dev';
 const path = 'path';
 
@@ -10,7 +9,7 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 1200,
     height: 700,
-    icon: __dirname + '/public/icon.icns',
+    icon: `${__dirname}/public/icon.icns`,
     webPreferences: {
       nodeIntegration: true,
     },
@@ -42,27 +41,27 @@ app.on('activate', () => {
 const template = [
   // { role: 'appMenu' }
   ...(isMac
-    ? [{
-        label: app.name,
-        submenu: [
-          { role: 'about' },
-          { type: 'separator' },
-          { role: 'services' },
-          { type: 'separator' },
-          { role: 'hide' },
-          { role: 'hideOthers' },
-          { role: 'unhide' },
-          { type: 'separator' },
-          { role: 'quit' }
-        ]
-      }]
+    ? [
+        {
+          label: app.name,
+          submenu: [
+            { role: 'about' },
+            { type: 'separator' },
+            { role: 'services' },
+            { type: 'separator' },
+            { role: 'hide' },
+            { role: 'hideOthers' },
+            { role: 'unhide' },
+            { type: 'separator' },
+            { role: 'quit' },
+          ],
+        },
+      ]
     : []),
   // { role: 'fileMenu' }
   {
     label: 'File',
-    submenu: [
-      isMac ? { role: 'close' } : { role: 'quit' }
-    ]
+    submenu: [isMac ? { role: 'close' } : { role: 'quit' }],
   },
   // { role: 'editMenu' }
   {
@@ -82,18 +81,11 @@ const template = [
             { type: 'separator' },
             {
               label: 'Speech',
-              submenu: [
-                { role: 'startSpeaking' },
-                { role: 'stopSpeaking' }
-              ]
-            }
+              submenu: [{ role: 'startSpeaking' }, { role: 'stopSpeaking' }],
+            },
           ]
-        : [
-            { role: 'delete' },
-            { type: 'separator' },
-            { role: 'selectAll' }
-          ])
-    ]
+        : [{ role: 'delete' }, { type: 'separator' }, { role: 'selectAll' }]),
+    ],
   },
   // { role: 'viewMenu' }
   {
@@ -107,8 +99,8 @@ const template = [
       { role: 'zoomIn' },
       { role: 'zoomOut' },
       { type: 'separator' },
-      { role: 'togglefullscreen' }
-    ]
+      { role: 'togglefullscreen' },
+    ],
   },
   // { role: 'windowMenu' }
   {
@@ -121,12 +113,10 @@ const template = [
             { type: 'separator' },
             { role: 'front' },
             { type: 'separator' },
-            { role: 'window' }
+            { role: 'window' },
           ]
-        : [
-            { role: 'close' }
-          ])
-    ]
+        : [{ role: 'close' }]),
+    ],
   },
   {
     role: 'help',
@@ -134,13 +124,13 @@ const template = [
       {
         label: 'Learn More',
         click: async () => {
-          const { shell } = require('electron')
-          await shell.openExternal('https://electronjs.org')
-        }
-      }
-    ]
-  }
-]
+          const { shell } = require('electron');
+          await shell.openExternal('https://electronjs.org');
+        },
+      },
+    ],
+  },
+];
 
-const menu = Menu.buildFromTemplate(template)
-Menu.setApplicationMenu(menu)
+const menu = Menu.buildFromTemplate(template);
+Menu.setApplicationMenu(menu);

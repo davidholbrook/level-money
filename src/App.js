@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import './App.css';
 
-import Icons from './icons/icons';
-import Monthly from './layout/monthly';
-import Special from './layout/special';
+import Monthly from './layout/monthly.js';
+import Special from './layout/special.js';
 
-import AddToDb from './components/addToDb';
+import AddToDb from './components/addToDb.js';
 
 function App() {
   const [state, setState] = useState({
@@ -21,9 +20,7 @@ function App() {
             Level Money
           </h1>
           <ul className="text-lg">
-            <li
-              className={`border-b border-t border-white py-4 text-white text-center cursor-pointer ${state.page === 'monthly' ? 'bg-primary !text-black' : ''}`}
-            >
+            <li>
               <a
                 onClick={() => {
                   const dd = 'monthly';
@@ -35,13 +32,12 @@ function App() {
                 }}
                 role="link"
                 tabIndex={0}
+                className={`block border-b border-t border-white py-4 text-white text-center cursor-pointer ${state.page === 'monthly' ? 'bg-primary !text-black' : ''}`}
               >
                 Monthly
               </a>
             </li>
-            <li
-              className={`border-b border-white py-4 text-white text-center cursor-pointer ${state.page === 'special' ? 'bg-primary !text-black' : ''}`}
-            >
+            <li>
               <a
                 onClick={() => {
                   const dd = 'special';
@@ -53,6 +49,7 @@ function App() {
                 }}
                 role="link"
                 tabIndex={0}
+                className={`block border-b border-white py-4 text-white text-center cursor-pointer ${state.page === 'special' ? 'bg-primary !text-black' : ''}`}
               >
                 Special
               </a>
@@ -60,21 +57,16 @@ function App() {
           </ul>
           <button
             type="button"
-            className="relative top-[65vh] mx-auto  flex items-center justify-center bg-primary rounded-md p-3"
+            onClick={() => {
+              const dd = true;
+              setState({
+                ...state,
+                addPage: dd,
+              });
+            }}
+            className="relative top-[65vh] mx-auto  flex items-center justify-center bg-primary rounded-md p-3 uppercase text-[1rem] font-semibold text-darkgrey fancy"
           >
-            <button
-              type="button"
-              onClick={() => {
-                const dd = true;
-                setState({
-                  ...state,
-                  addPage: dd,
-                });
-              }}
-              className="uppercase text-[1rem] font-semibold text-darkgrey fancy"
-            >
-              Add Transaction
-            </button>
+            Add Transaction
           </button>
         </div>
       </div>

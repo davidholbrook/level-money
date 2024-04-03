@@ -2,8 +2,8 @@ import React from 'react';
 
 import Dexie from 'dexie';
 import { useLiveQuery } from 'dexie-react-hooks';
-import LabelSwitch from '../utils/labelsSwitch';
-import Icons from '../icons/icons';
+import LabelSwitch from '../utils/labelsSwitch.js';
+import Icons from '../icons/icons.js';
 
 function Special() {
   const db = new Dexie('llatSP');
