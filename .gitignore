@@ -71,3 +71,5 @@ sketch
 # End of https://www.toptal.com/developers/gitignore/api/react,macos,git
 /.nova/Configuration.json
 /.env
+/build
+/dist
