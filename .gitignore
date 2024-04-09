@@ -4,3 +4,5 @@ node_modules
 app
 dist
 /.nova/Configuration.json
+/.DS_Store
+.DS_Store
