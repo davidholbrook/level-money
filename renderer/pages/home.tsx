@@ -9,8 +9,10 @@ export default function HomePage() {
       <Head>
         <title>Level Money</title>
       </Head>
-      <h2>Account Overview</h2>
-      <p>This is how your money is doing</p>
+      <div className="wrapper mx-auto">
+        <h2 className="text-3xl font-bold">Account Overview</h2>
+        <p className="text-sm pt-2">This is how your money is doing</p>
+      </div>
     </>
   )
 }

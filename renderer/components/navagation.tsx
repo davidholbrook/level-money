@@ -3,10 +3,10 @@ import Link from 'next/link';
 
 const Navagation = () => {
 	return (
-		<div>
+		<div className="flex justify-between bg-red-50">
 			<h1>Level Money</h1>
-			<div>
-				<Link href="/monthly">Monthly</Link>
+			<div className="flex gap-5">
+				<Link href="/monthly" className="text-black">Monthly</Link>
 				<Link href="/special">Special</Link>
 			</div>
 		</div>
