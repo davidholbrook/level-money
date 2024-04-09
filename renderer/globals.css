@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.floatingPlus{
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+
+    @apply bg-blue-400 p-2 rounded-full;
+}
