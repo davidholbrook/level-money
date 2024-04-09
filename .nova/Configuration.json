@@ -1,0 +1,13 @@
+{
+  "eablokker.tabsSidebar.config.collapsedFolders" : [
+
+  ],
+  "eablokker.tabsSidebar.config.customKindGroupsOrder" : [
+    "json",
+    "javascript"
+  ],
+  "eablokker.tabsSidebar.config.customTabOrder" : [
+    "file:\/\/\/Users\/davidholbrook\/Sites\/level-money\/package.json",
+    "file:\/\/\/Users\/davidholbrook\/Sites\/level-money\/renderer\/pages\/home.jsx"
+  ]
+}
