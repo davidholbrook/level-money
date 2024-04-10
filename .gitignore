@@ -6,3 +6,4 @@ dist
 /.nova/Configuration.json
 /.DS_Store
 .DS_Store
+/.env.local
