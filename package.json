@@ -16,6 +16,8 @@
     ]
   },
   "dependencies": {
+    "dexie": "^4.0.1",
+    "dexie-react-hooks": "^1.1.7",
     "electron-serve": "^1.3.0",
     "electron-store": "^8.1.0",
     "eslint-config-wesbos": "^4.0.1"
