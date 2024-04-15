@@ -10,11 +10,6 @@
     "build": "nextron build",
     "postinstall": "electron-builder install-app-deps"
   },
-  "eslintConfig": {
-    "extends": [
-      "wesbos"
-    ]
-  },
   "dependencies": {
     "dexie": "^4.0.1",
     "dexie-react-hooks": "^1.1.7",
@@ -24,6 +19,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
+    "@next/eslint-plugin-next": "^14.1.4",
     "@types/react": "18.2.75",
     "autoprefixer": "^10.4.19",
     "electron": "^28.2.1",
