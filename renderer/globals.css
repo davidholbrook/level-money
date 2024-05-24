@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.floatingPlus{
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+
+    @apply bg-blue-400 p-2 rounded-full;
+}
+
+.offset-btn{
+    box-shadow: 0.5rem -0.5rem 0rem rgba(71,106,111,0.4);
+    transition: all 320ms ease-in-out;
+}
+.offset-btn:hover{
+    box-shadow: none;
+    transform: translate(0.5rem, -0.5rem);
+}
